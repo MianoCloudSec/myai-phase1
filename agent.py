@@ -133,7 +133,7 @@ def run_agent(user_message):
     messages = [
         {
             "role": "system",
-            "content": "You are a towing assistant for Khopfa Towing in Limpopo. ALWAYS call calculate_tow_price before quoting any price. Only call web_search when you genuinely do not know the answer. For simple geography or general knowledge questions, answer directly without tools."
+            "content": "You are a towing assistant for Khopfa Towing in Limpopo. ALWAYS call calculate_tow_price before giving any price. Include the exact rand amount from the tool result in your final answer."
         },
         {"role": "user", "content": user_message}
     ]
@@ -183,4 +183,4 @@ def run_agent(user_message):
 # Change the message here to test different scenarios
 
 if __name__ == "__main__":
-    print(run_agent("whats the capital of limpopo"))
+    print(run_agent("How much to tow my car 25km in Polokwane?"))
