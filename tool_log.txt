@@ -1,0 +1,9 @@
+[2026-06-08 08:13:38] TOOL: web_search | INPUT: {'query': 'towing regulations Limpopo South Africa'} | RESULT: Source: https://kampi.co.za/blog/eb-license-guide
+The Tow Vehicle Rules · Unbraked trailer (under 750 kg): Your vehicle's tare (empty weight) must be at least double the trailer's GVM · Braked trailer (over 750
+
+Source: https://www.safireinsurance.com/news-articles/news-articles-2024/are-you-towing-illegally
+By law in South Africa, it has to be between 25kg and 100kg. Manufacturer's maximum towing capacity: Vehicle manufacturers specify the maximum
+
+Source: https://www.facebook.com/jp4safety/videos/ts-towing-impound/655818357130561
+Across South Africa, the constitution dictates that each municipality must enforce the national regulations around traffic matters.
+[2026-06-08 08:14:24] TOOL: calculate_tow_price | INPUT: {'distance_km': 25, 'after_hours': False} | RESULT: R530
