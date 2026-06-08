@@ -107,3 +107,22 @@ Tool are independent of the model, model routes between tools based on descripti
 Phase1 week 1 I built my first agent with python only, I didnt know where to start but eventually figured it out. I got confused mostly by understanding what errors mean everytime I came across an error, somewhere I read that errors are alsop readable and at the end they have a message. Proceeding with the agent I also learnt that parallel tool calls are not natural agent capabilities, you as the dev you need to instruct the agent that yes you can.
 
 I then went on with testing, during testing I was surprised by empty search where I searched with nothing expecting the agent to ask for input but it didnt ask, meaning it failed and broke. Amazing thing was me understanding that an agent is a loop that keeps going until stopped, it has sevenn steps, inputting context to the agent and the tools for agent to use. Agent checks message then decide if it needs a tool or it can work on it, then it proceeds for stop with two reasons, tool use or done. Then use tool complete task append message to conversation and restart loop. I now understand that gates are important and they help either i business context or ops.
+
+#Week 2 - Anthropic SDK
+Rebuilding entire agent.py on anthropic sdk
+
+#Day 6
+CLAUDE.md is a markdown file that lives in the project folder and governs agent behaviour. It contains who the agent is, what tools it has, rules it must never break, and business context. It serves two purposes — permanent system prompt reference and documentation for any developer who opens the project. How you write it determines how the agent behaves — it is architecture not just documentation.
+
+##Day 7
+Rebuilt the Khopfa Towing agent on Anthropic SDK. Key differences from Groq:
+- stop_reason is "end_turn" not "stop"
+- stop_reason is "tool_use" not "tool_calls"
+- tool inputs come as Python dictionaries — no json.loads() needed
+- tool results go back as "user" role — Anthropic only has user and assistant roles
+- response.content is a list of blocks — loop through to find tool_use blocks
+- tool schemas use "input_schema" not "parameters", no "type": "function" wrapper
+
+PostToolUse logging hook — runs after every tool execution, logs timestamp, tool name, inputs and result to tool_log.txt. In production this is the audit trail — proof of exactly what the agent calculated for any customer at any time.
+
+Biggest difference from Week 1: everything worked first try. Correct price, correct after hours surcharge, Tavily returning real results. No workarounds needed. Proves that the model matters as much as the harness — Claude must be specifically trained for reliable tool use.

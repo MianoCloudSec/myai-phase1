@@ -359,4 +359,4 @@ def run_agent(user_message, messages=None):
 # ── ENTRY POINT ────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print(run_agent("Research towing regulations in Limpopo and also tell me how much for a 30km tow"))
+    print(run_agent("how much for a 30km tow"))

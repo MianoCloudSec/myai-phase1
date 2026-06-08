@@ -31,3 +31,10 @@ All trailers with a GVM of 750 kg or more must be equipped with independent brak
 
 Towing operators in South Africa, including those in Limpopo, must comply with the National Road Traffic Act, the Consumer Protection Act, and any applicable municipal bylaws. Tow truck drivers and operators affiliated with industry organizations like UTASA (United Towing Association of South Africa) must ensure proper qualifications and conduct according to established codes of conduct and legal requirements.
 [2026-06-08 09:47:56] TOOL: calculate_tow_price | INPUT: {'distance_km': 30, 'after_hours': False} | RESULT: R590
+[2026-06-08 12:43:01] TOOL: calculate_tow_price | INPUT: {'distance_km': 5, 'after_hours': False} | RESULT: R350
+[2026-06-08 13:21:06] TOOL: calculate_tow_price | INPUT: {'distance_km': 120, 'after_hours': False} | RESULT: R1670
+[2026-06-08 13:21:38] TOOL: calculate_tow_price | INPUT: {'distance_km': 270, 'after_hours': False} | RESULT: R3470
+[2026-06-08 13:21:45] TOOL: format_booking | INPUT: {'booking_details': 'Name: Sipho, Phone: 072 555 0101, From: Polokwane '} | RESULT: formatted message generated
+[2026-06-08 14:17:25] TOOL: calculate_tow_price | INPUT: {'distance_km': 25, 'after_hours': False} | RESULT: R530
+[2026-06-08 14:20:03] TOOL: calculate_tow_price | INPUT: {'distance_km': 25, 'after_hours': False} | RESULT: R530
+[2026-06-08 14:50:56] TOOL: calculate_tow_price | INPUT: {'distance_km': 30, 'after_hours': False} | RESULT: R590
