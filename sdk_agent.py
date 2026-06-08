@@ -128,6 +128,20 @@ tools = [
             },
             "required": ["path"]
         }
+    },
+    { ##Day 8
+        "name": "research",
+        "description": "Research a topic in depth and return a clean summary. Use this when the customer asks about regulations, industry information, or anything requiring multiple searches. This runs in isolation — use it instead of calling web_search directly for complex topics.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The research topic or question to investigate"
+                }
+            },
+            "required": ["query"]
+        }
     }
 ]
 
@@ -141,6 +155,92 @@ def log_tool_call(tool_name, tool_input, result):
     log_entry = f"[{timestamp}] TOOL: {tool_name} | INPUT: {tool_input} | RESULT: {result}\n"
     with open("tool_log.txt", "a") as f:
         f.write(log_entry)
+
+# ── SUB-AGENT — ISOLATE PRIMITIVE(Day8) ──────────────────────────────────────────
+# research_agent runs in complete isolation from the main conversation
+# Why: complex research would pollute the main context with raw search results
+# What: takes a query, does deep research, returns one clean summary
+# How: own messages list, own loop, own context — nothing spills into main agent
+# The main agent calls this as a regular tool — doesn't know it's another agent
+
+def research_agent(query):
+    # Isolated context — completely separate from main conversation
+    research_messages = []
+    
+    # Sub-agent system prompt — optimised for research not conversation
+    system = "You are a research assistant. Search for information on the given topic, analyse the results, and return a clear concise summary in 2-3 paragraphs. Only use the information you find — do not guess or make up facts."
+    
+    # Initial research request
+    research_messages.append({
+        "role": "user",
+        "content": f"Research this topic and give me a detailed summary: {query}"
+    })
+    
+    # Sub-agent has access to web_search only — focused tool set
+    research_tools = [
+        {
+            "name": "web_search",
+            "description": "Search the web for current information.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The search query"
+                    }
+                },
+                "required": ["query"]
+            }
+        }
+    ]
+    
+    # Isolated agent loop — same 7 steps but in its own bubble
+    while True:
+        try:
+            response = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=1024,
+                system=system,
+                messages=research_messages,
+                tools=research_tools
+            )
+        except Exception as e:
+            return f"Research failed: {str(e)}"
+        
+        stop_reason = response.stop_reason
+        
+        # Research done — return clean summary
+        if stop_reason == "end_turn":
+            summary = ""
+            for block in response.content:
+                if block.type == "text":
+                    summary += block.text
+            return summary
+        
+        # Sub-agent needs to search
+        if stop_reason == "tool_use":
+            research_messages.append({
+                "role": "assistant",
+                "content": response.content
+            })
+            
+            tool_results = []
+            for block in response.content:
+                if block.type == "tool_use":
+                    # Only web_search available in sub-agent
+                    result = web_search(block.input["query"])
+                    log_tool_call(f"research_agent:{block.name}", block.input, result[:100])
+                    tool_results.append({
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": result
+                    })
+            
+            research_messages.append({
+                "role": "user",
+                "content": tool_results
+            })
+
 
 # ── EXECUTE TOOL ───────────────────────────────────────────────────────────
 # Same bridge as before — model says which tool, we run it
@@ -156,6 +256,8 @@ def execute_tool(tool_name, tool_input):
         result = write_file(**tool_input)
     elif tool_name == "read_file":
         result = read_file(**tool_input)
+    elif tool_name == "research":
+        result = research_agent(**tool_input)
     else:
         result = f"Unknown tool: {tool_name}"
     
@@ -257,4 +359,4 @@ def run_agent(user_message, messages=None):
 # ── ENTRY POINT ────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print(run_agent("How much to tow my car 25km in Polokwane?"))
+    print(run_agent("Research towing regulations in Limpopo and also tell me how much for a 30km tow"))

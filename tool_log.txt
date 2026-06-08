@@ -7,3 +7,27 @@ By law in South Africa, it has to be between 25kg and 100kg. Manufacturer's maxi
 Source: https://www.facebook.com/jp4safety/videos/ts-towing-impound/655818357130561
 Across South Africa, the constitution dictates that each municipality must enforce the national regulations around traffic matters.
 [2026-06-08 08:14:24] TOOL: calculate_tow_price | INPUT: {'distance_km': 25, 'after_hours': False} | RESULT: R530
+[2026-06-08 09:47:39] TOOL: research_agent:web_search | INPUT: {'query': 'towing regulations Limpopo South Africa'} | RESULT: Source: https://trid.trb.org/View/451213
+## Connect with TRB. TRID: the TRIS & ITRD database. # CARA
+[2026-06-08 09:47:41] TOOL: research_agent:web_search | INPUT: {'query': 'vehicle towing requirements South Africa Limpopo province'} | RESULT: Source: https://www.cars.co.za/motoring-news/guide-to-safe-towing/294448
+The combined length of the 
+[2026-06-08 09:47:43] TOOL: research_agent:web_search | INPUT: {'query': 'South Africa towing laws specifications requirements'} | RESULT: Source: https://www.cars.co.za/motoring-news/guide-to-safe-towing/294448
+Towing License Requirements
+[2026-06-08 09:47:48] TOOL: research_agent:web_search | INPUT: {'query': '"Limpopo" towing regulations provincial requirements'} | RESULT: Source: https://www.ultimateangling.co.za/index.php?topic=21330.0
+(2) The service brake of a trailer
+[2026-06-08 09:47:50] TOOL: research_agent:web_search | INPUT: {'query': 'National Road Traffic Act towing regulations South Africa caravans trailers'} | RESULT: Source: https://trid.trb.org/View/451213
+## Connect with TRB. TRID: the TRIS & ITRD database. # CARA
+[2026-06-08 09:47:56] TOOL: research | INPUT: {'query': 'towing regulations in Limpopo South Africa'} | RESULT: Based on my research, I found that towing regulations in Limpopo are governed by the **National Road Traffic Act of South Africa** rather than province-specific regulations. Here is a detailed summary:
+
+## General Towing Regulations Applicable to Limpopo
+
+Towing in Limpopo, South Africa is regulated under the National Road Traffic Act and its associated regulations, which apply uniformly across all provinces. **Trailer weight restrictions depend on the towing vehicle's capacity.** For unbraked trailers (under 750 kg), the towing vehicle's tare (empty weight) must be at least double the trailer's gross vehicle mass (GVM). For braked trailers exceeding 750 kg, the trailer weight cannot exceed the towing vehicle's tare mass or 3,500 kilograms, whichever is lower. A standard car license allows towing of trailers up to 750 kg, while heavier trailers require specific licensing.
+
+## Technical and Safety Requirements
+
+All trailers with a GVM of 750 kg or more must be equipped with independent braking systems that are operated by the driver of the towing vehicle. The combined length of the towing vehicle and trailers must not exceed 22 meters. Caravans and towed vehicles can be required to undergo roadworthiness testing by local authorities or licensed private testing stations. Additionally, there is an 80 km/h speed limit for vehicles or combinations exceeding nine tons in mass. Importantly, tows conveying persons are limited to 30 km/h unless the towed vehicle is a semi-trailer.
+
+## Operator Compliance
+
+Towing operators in South Africa, including those in Limpopo, must comply with the National Road Traffic Act, the Consumer Protection Act, and any applicable municipal bylaws. Tow truck drivers and operators affiliated with industry organizations like UTASA (United Towing Association of South Africa) must ensure proper qualifications and conduct according to established codes of conduct and legal requirements.
+[2026-06-08 09:47:56] TOOL: calculate_tow_price | INPUT: {'distance_km': 30, 'after_hours': False} | RESULT: R590
