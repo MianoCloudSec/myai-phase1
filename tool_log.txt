@@ -38,3 +38,5 @@ Towing operators in South Africa, including those in Limpopo, must comply with t
 [2026-06-08 14:17:25] TOOL: calculate_tow_price | INPUT: {'distance_km': 25, 'after_hours': False} | RESULT: R530
 [2026-06-08 14:20:03] TOOL: calculate_tow_price | INPUT: {'distance_km': 25, 'after_hours': False} | RESULT: R530
 [2026-06-08 14:50:56] TOOL: calculate_tow_price | INPUT: {'distance_km': 30, 'after_hours': False} | RESULT: R590
+[2026-06-08 18:17:35] TOOL: calculate_tow_price | INPUT: {'distance_km': 25, 'after_hours': False} | RESULT: R530
+[2026-06-08 18:19:28] TOOL: format_booking | INPUT: {'booking_details': 'Name: Sipho, Phone: 0608799648, Pickup: Polokwane '} | RESULT: formatted message generated
